@@ -23,11 +23,6 @@ class Person < Nameable
     of_age? || @parent_permission == true
   end
 
-  def add_rentals(rental)
-    rentals.push(rental)
-    rental.person = self
-  end
-
   private
 
   def of_age?
