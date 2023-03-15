@@ -9,4 +9,3 @@ require_relative 'book'
 # puts renta_uno
 # puts person_uno.rentals.map { |rental| rental.person.name }
 # puts libro_uno.rentals.map { |rental| rental.person.name }
-
