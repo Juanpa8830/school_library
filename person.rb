@@ -1,6 +1,8 @@
 require 'securerandom'
 
 require_relative 'nameable'
+require_relative 'rental'
+
 
 class Person < Nameable
   attr_accessor :name, :age
@@ -21,6 +23,10 @@ class Person < Nameable
 
   def can_use_services?
     of_age? || @parent_permission == true
+  end
+
+  def add_rental(date, book)
+    Rental.new(date, book, self)
   end
 
   private
