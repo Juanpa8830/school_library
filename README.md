@@ -84,8 +84,6 @@ ruby app.rb
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
-
 👤 **Juan Pablo Guerrero**
 
 - GitHub: [@juanpa8830](https://github.com/Juanpa8830)
