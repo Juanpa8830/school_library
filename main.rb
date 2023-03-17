@@ -1,11 +1,15 @@
 require_relative 'classroom'
 require_relative 'student'
+require_relative 'teacher'
 require_relative 'rental'
 require_relative 'book'
+require_relative 'person'
+require_relative 'app'
 
-# puts person_uno = Student.new(20, 'francisco')
-# libro_uno = Book.new('hello World', 'author hello')
-# puts renta_uno = Rental.new('2023-03-15', libro_uno, person_uno)
-# puts renta_uno
-# puts person_uno.rentals.map { |rental| rental.person.name }
-# puts libro_uno.rentals.map { |rental| rental.person.name }
+def main
+  app = App.new
+  app.start
+  puts 'Thanks for using this app!'
+end
+
+main
