@@ -97,7 +97,6 @@ ruby app.rb
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-> Describe 1 - 3 features you will add to the project.
 
 - [ ] **[Register new student/teacher]**
 - [ ] **[increase the amount of books available in the library]**
