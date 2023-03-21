@@ -1,8 +1,10 @@
 require_relative 'app'
+require_relative 'book'
 
 def main
   app = App.new
   app.start
+  app.save_data
   puts 'Thanks for using this app!'
 end
 

@@ -1,4 +1,5 @@
 require_relative 'rental'
+require 'json'
 
 class Book
   attr_accessor :title, :author
@@ -15,8 +16,12 @@ class Book
   end
 
   def rental_list
-    list = ''
     @rentals.each { |rental| list << "(#{rental.date} | #{rental.book.title} | #{rental.person.name})" }
     list
+  end
+
+  def to_json(*_args)
+    hash = { title: @title, author: @author }
+    hash.to_json
   end
 end

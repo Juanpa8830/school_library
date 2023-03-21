@@ -3,41 +3,53 @@ require_relative 'teacher'
 require_relative 'book'
 require_relative 'rental'
 require_relative 'person'
-require_relative 'prueba'
+require 'json'
 
 class App
   def initialize
     @books = []
     @users = []
     @rentals = []
+    load_data
   end
 
   def books_list
+    if @books.empty?
+      puts "Add a new book first"
+    else
     list = ''
     @books.each_with_index { |book, i| list << "\n[#{i + 1}]. Title: #{book.title}, Author: #{book.author}" }
     list << "\n"
+    end
   end
 
   def users_list
+    if @users.empty?
+      puts "Add a new user first"
+    else
     list = ''
     @users.each_with_index do |user, i|
       list << "\n[#{i + 1}]. id:#{user.id} class:#{user.class}  name: #{user.name}, age: #{user.age}"
     end
     list << "\n\n"
   end
+  end
 
   def rentals_list
+    if @rentals.empty?
+      puts "Add a new rental first"
+    else
     list = ''
     @rentals.each_with_index do |rental, i|
       list << "\n[#{i + 1}]. date:#{rental.date} book:#{rental.book.title}  owner: #{rental.person.name}"
     end
     list << "\n\n"
   end
+  end
 
   def start
     loop do
       option = selected_menu_option
-
       case option
       when 1
         puts books_list
@@ -54,7 +66,6 @@ class App
       else
         break
       end
-
       wait_user
     end
   end
@@ -89,7 +100,11 @@ class App
     end
   end
 
+
   def create_rental
+    if @books.empty? || @users.empty?
+      puts "your books list or users list is empty. plase add a book/user first"
+    else
     puts "\nselect a book from the following list, by number:"
     puts books_list
     book_number = get_option_selected(1, @books.length)
@@ -103,7 +118,8 @@ class App
     rental = Rental.new(date, selected_book, selected_user)
     @rentals.push(rental) unless rental.nil?
     puts "\nrental created successfully.\n"
-  end
+    end
+ end
 
   def user_rentals
     print 'Input user id: '
@@ -127,7 +143,6 @@ class App
     print 'has parent permission? [Y/N]'
     answer = gets.chomp.capitalize
     return true unless answer == 'N'
-
     false
   end
 
@@ -155,4 +170,57 @@ class App
     @users.push(person)
     puts "\nteacher created successfully.\n"
   end
+
+  def save_data
+    save_books
+    save_users
+    save_rentals
+  end
+
+
+  def save_books
+    File.open('info/books.json', 'w') { |f| f << @books.to_json }
+  end
+  def save_users
+    File.open('info/users.json', 'w'){ |f| f << @users.to_json }
+  end
+  def save_rentals
+    File.open('info/rentals.json', 'w'){ |f| f << @rentals.to_json }
+  end
+
+  def load_data
+    load_books
+    load_users
+    load_rentals
+   end
+
+  def load_books
+    return unless File.exist?('info/books.json') && File.size?('info/books.json')
+    information = JSON.parse(File.read('info/books.json'))
+    information.map { |book| @books.push(Book.new(book['title'], book['author'])) }
+  end
+
+  def load_users
+    return unless File.exist?('info/users.json') && File.size?('info/users.json')
+    information = JSON.parse(File.read('info/users.json'))
+    information.map do 
+      |user| if user['class'] == 'Student'
+             @users.push(Student.new(user['age'], user['name'], user['id'], parent_permission: user['parent_permission'] )) 
+             else
+            @users.push(Teacher.new(user['age'], user['specialization'], user['name'], user['id'], parent_permission: user['parent_permission'] )) 
+            end
+      end
+  end
+
+  def load_rentals
+    return unless File.exist?('info/rentals.json') && File.size?('info/rentals.json')
+  
+    JSON.parse(File.read('info/rentals.json')).each do |rental|
+      rent_user = @users.find { |user| user.id == rental["person"]["id"] }
+      rent_book = @books.find { |book| book.title == rental["book"]["title"] }
+      @rentals.push(Rental.new(rental["date"], rent_book, rent_user))
+    end
+  end
+ 
 end
+
