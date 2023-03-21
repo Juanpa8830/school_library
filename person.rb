@@ -36,7 +36,7 @@ class Person < Nameable
   end
 
   def to_json(*_args)
-    hash = { class: self.class, id:@id, name: @name, age: @age, parent_permission: @parent_permission }
+    hash = { class: self.class, id: @id, name: @name, age: @age, parent_permission: @parent_permission }
     hash.to_json
   end
 
@@ -45,4 +45,4 @@ class Person < Nameable
   def of_age?
     @age >= 18
   end
-  end
+end
