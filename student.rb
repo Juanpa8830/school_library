@@ -1,7 +1,6 @@
 require_relative 'person'
 require 'securerandom'
 
-
 class Student < Person
   attr_reader :classroom
 
