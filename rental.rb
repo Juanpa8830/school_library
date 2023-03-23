@@ -17,7 +17,7 @@ class Rental
   end
 
   def to_json(*_args)
-    hash = { date: @date, book: @book, person: @person }
+    hash = { date: date, book_title: book.title, person_id: person.id }
     hash.to_json
   end
 end

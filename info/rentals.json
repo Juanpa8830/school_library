@@ -1,1 +1,1 @@
-[{"date":"2020-03-04","book":{"title":"hello","author":"pierre"},"person":{"class":"Student","id":"f20f4d7c-f3ac-48e4-a4e6-098e4acf5ae8","name":"francisco","age":30,"parent_permission":true}},{"date":"2022-05-06","book":{"title":"world","author":"autor"},"person":{"class":"Student","id":"f20f4d7c-f3ac-48e4-a4e6-098e4acf5ae8","name":"francisco","age":30,"parent_permission":true}}]
+[{"date":"2020-05-08","book_title":"hello","person_id":"e6f1de31-87a9-4557-9bf3-4dbb42866209"}]

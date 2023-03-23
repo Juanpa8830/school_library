@@ -89,6 +89,11 @@ ruby app.rb
 - GitHub: [@juanpa8830](https://github.com/Juanpa8830)
 - LinkedIn: [Juan Pablo Guerrero](https://www.linkedin.com/in/juanpabloguerrerorios/)
 
+👤 **Wali-Muhammad**
+
+- GitHub: [@Itswali](https://github.com/Itswali)
+- Twitter: [@Wali-Muhammad](https://twitter.com/WaliMuh94818599)
+- LinkedIn: [@Wali Muhammad](https://www.linkedin.com/in/wali-muhammad-666040244/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
