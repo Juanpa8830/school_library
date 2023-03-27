@@ -1,5 +1,5 @@
 require_relative 'app'
-require_relative 'book'
+#require_relative 'book'
 
 def main
   app = App.new

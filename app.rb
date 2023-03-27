@@ -53,21 +53,13 @@ class App
     loop do
       option = selected_menu_option
       case option
-      when 1
-        puts books_list
-      when 2
-        puts users_list
-      when 3
-        create_person
-      when 4
-        create_book
-      when 5
-        create_rental
-      when 6
-        puts user_rentals
-      else
-        break
-      end
+      when 1  then puts books_list 
+      when 2 then puts users_list 
+      when 3 then create_person  
+      when 4 then create_book 
+      when 5 then create_rental 
+      when 6 then puts user_rentals 
+      else  break  end
       wait_user
     end
   end
