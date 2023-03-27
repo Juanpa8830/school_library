@@ -49,7 +49,7 @@ module ExtraMethods
     return unless File.exist?('info/rentals.json') && File.size?('info/rentals.json')
 
     JSON.parse(File.read('info/rentals.json')).each do |rental|
-      rent_user_id = @users.find { |user| user.id == rental['person'] }
+      rent_user_id = @users.find { |user| user.id == rental['person_id'] }
       rent_book_title = @books.find { |book| book.title == rental['book_title'] }
       @rentals.push(Rental.new(rental['date'], rent_book_title, rent_user_id))
     end
